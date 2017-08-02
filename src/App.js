@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state = {
       vehiclesToDisplay: [],
-      buyersToDisplay: []
+      buyersToDisplay: [],
+      vehicleURL: 'https://joes-autos.herokuapp.com'
     }
 
     this.getVehicles = this.getVehicles.bind(this);
@@ -23,7 +24,13 @@ class App extends Component {
 
   getVehicles() {
     // axios (GET)
+    axios.get(this.state.vehicleURL + '/api/vehicles')
+        .then((response) => {
     // setState with response -> vehiclesToDisplay
+          this.setState({
+            vehiclesToDisplay: response.data
+          })
+        })
   }
 
   getPotentialBuyers() {
@@ -45,6 +52,7 @@ class App extends Component {
   filterByColor() {
     let color = this.refs.selectedColor.value;
     // axios (GET)
+    axios.get(this.state.vehicleURL + '/api/vehicleByColor')
     // setState with response -> vehiclesToDisplay
   }
 
