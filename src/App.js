@@ -35,6 +35,8 @@ class App extends Component {
 
   getPotentialBuyers() {
     // axios (GET)
+        axios.get(this.state.vehicleURL + '/api/vehicles')
+
     // setState with response -> buyersToDisplay
   }
 
